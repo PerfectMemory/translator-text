@@ -21,6 +21,6 @@ Gem::Specification.new do |spec|
 
   spec.require_paths = ['lib']
 
-  spec.add_dependency 'dry-struct', '~> 0.5.0'
-  spec.add_dependency 'httparty', '~> 0.15'
+  spec.add_dependency 'dry-struct', '~> 1.3.0'
+  spec.add_dependency 'httparty', '~> 0.17'
 end
