@@ -14,8 +14,10 @@ module TranslatorText
     # @since 1.0.0
     #
     # @param api_key [String] the Cognitive Services API Key
-    def initialize(api_key)
+    # @param region [String] the Cognitive Service Resource Region
+    def initialize(api_key, region = "westeurope")
       @api_key = api_key
+      @region = region
     end
 
     # Translate a group of sentences.
@@ -104,6 +106,7 @@ module TranslatorText
     def headers
       {
         'Ocp-Apim-Subscription-Key' => @api_key,
+        'Ocp-Apim-Subscription-Region' => @region,
         'X-ClientTraceId' => SecureRandom.uuid,
         'Content-type' => 'application/json'
       }
