@@ -160,9 +160,5 @@ describe TranslatorText::Client do
     it 'returns the detected language' do
       expect(results.map(&:language)).to eq %i[en en]
     end
-
-    it 'returns the detected alternatives' do
-      expect(results.map { |r| r.alternatives[0].language }).to eq %i[fr pt]
-    end
   end
 end

@@ -9,8 +9,6 @@ module TranslatorText
       attribute :score, Types::Float
       attribute :isTranslationSupported, Types::Bool
       attribute :isTransliterationSupported, Types::Bool
-
-      attribute :alternatives, Types::Array.of(Alternative)
     end
   end
 end
