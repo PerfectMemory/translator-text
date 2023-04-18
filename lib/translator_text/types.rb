@@ -3,7 +3,7 @@ require 'dry-struct'
 module TranslatorText
   # Includes all the types for the exchanges with the API
   module Types
-    include Dry::Types.module
+    include Dry.Types
 
     Symbol = Types::Symbol.constructor do |str|
       str ? str.to_sym : str
