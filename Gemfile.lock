@@ -3,7 +3,7 @@ PATH
   specs:
     translator-text (0.1.0)
       dry-struct (~> 1)
-      httparty (~> 0.15)
+      httparty (~> 0.21)
 
 GEM
   remote: https://rubygems.org/
