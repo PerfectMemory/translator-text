@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module TranslatorText
   # Helpers for Rspec
   module Rspec

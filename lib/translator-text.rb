@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative 'translator_text/version'
 require_relative 'translator_text/exceptions'
 require_relative 'translator_text/client'

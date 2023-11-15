@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'json'
 require 'securerandom'
 require 'httparty'
@@ -7,8 +9,8 @@ module TranslatorText
     include HTTParty
     format :json
 
-    base_uri 'https://api.cognitive.microsofttranslator.com'.freeze
-    API_VERSION = '3.0'.freeze
+    base_uri 'https://api.cognitive.microsofttranslator.com'
+    API_VERSION = '3.0'
 
     # Initialize the client
     # @since 1.0.0
@@ -33,7 +35,7 @@ module TranslatorText
       results = post(
         '/translate',
         body: build_sentences(sentences).to_json,
-        query: Hash[to: to, **options]
+        query: { to:, **options }
       )
 
       results.map { |r| Types::TranslationResult.new(r) }
@@ -68,7 +70,7 @@ module TranslatorText
 
     def post(path, params)
       options = {
-        headers: headers,
+        headers:,
         query: {}
       }.merge(params)
 

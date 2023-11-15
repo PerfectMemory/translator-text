@@ -1,3 +1,7 @@
+---
+require:
+  - rubocop-rspec
+
 LineLength:
   Max: 130
 
@@ -8,7 +12,8 @@ Metrics/ParameterLists:
   CountKeywordArgs: false
 
 AllCops:
-  TargetRubyVersion: 2.2
+  TargetRubyVersion: 3.1
+  NewCops: enable
 
 EndAlignment:
   EnforcedStyleAlignWith: variable

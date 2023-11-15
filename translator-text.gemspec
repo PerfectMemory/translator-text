@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 lib = File.expand_path('lib', __dir__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'translator_text/version'
@@ -21,6 +23,8 @@ Gem::Specification.new do |spec|
 
   spec.require_paths = ['lib']
 
+  spec.required_ruby_version = '>= 3.1'
   spec.add_dependency 'dry-struct', '~> 1'
   spec.add_dependency 'httparty', '~> 0.21'
+  spec.metadata['rubygems_mfa_required'] = 'true'
 end

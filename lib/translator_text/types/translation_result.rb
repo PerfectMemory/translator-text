@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module TranslatorText
   module Types
     class TranslationResult < Dry::Struct
@@ -12,9 +14,9 @@ module TranslatorText
       #
       # @return [Symbol] the language
       def detected_language
-        if h = detectedLanguage['language']
-          h.to_sym
-        end
+        return unless (h = detectedLanguage['language'])
+
+        h.to_sym
       end
     end
   end
