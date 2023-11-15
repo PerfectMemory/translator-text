@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    translator-text (0.2.0)
+    translator-text (0.3.0)
       dry-struct (~> 1)
       httparty (~> 0.21)
 
