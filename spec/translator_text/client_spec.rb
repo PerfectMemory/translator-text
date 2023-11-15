@@ -100,9 +100,7 @@ describe TranslatorText::Client do
     end
 
     it 'returns an array of Types::TranslationResult' do
-      results.each do |result|
-        expect(result).to be_a(TranslatorText::Types::TranslationResult)
-      end
+      expect(results).to all(be_a(TranslatorText::Types::TranslationResult))
     end
 
     it 'returns the translated sentences' do
@@ -157,9 +155,7 @@ describe TranslatorText::Client do
     end
 
     it 'returns an array of Types::DetectionResult' do
-      results.each do |result|
-        expect(result).to be_a(TranslatorText::Types::DetectionResult)
-      end
+      expect(results).to all(be_a(TranslatorText::Types::DetectionResult))
     end
 
     it 'returns the detected language' do

@@ -6,7 +6,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## Unreleased
 ### Changed
+- Add support of the COGNITIVE_SUBSCRIPTION_REGION
 - Target ruby 3.1+
+
+### Fixed
 - Upgrade Client array queries normalization
 
 ## [0.2.0] - 2023-04-19
