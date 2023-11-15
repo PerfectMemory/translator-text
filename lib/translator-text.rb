@@ -16,7 +16,10 @@ module TranslatorText
     private
 
     def build_client
-      TranslatorText::Client.new(ENV.fetch('COGNITIVE_SUBSCRIPTION_KEY'))
+      TranslatorText::Client.new(
+        ENV.fetch('COGNITIVE_SUBSCRIPTION_KEY'),
+        ENV.fetch('COGNITIVE_SUBSCRIPTION_REGION', nil)
+      )
     end
   end
 end

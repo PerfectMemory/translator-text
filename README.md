@@ -29,15 +29,34 @@ Or install it yourself as:
 
 ## Usage
 
+### Client
+
+You can instanciate your own client by passing the [Azure authentication](https://learn.microsoft.com/en-us/azure/ai-services/translator/reference/v3-0-reference#authentication) parameters.
+
+```ruby
+require 'translator-text'
+
+client = TranslatorText::Client.new(api_key, api_region)
+```
+
+Or use the built-in that uses the following environment variables:
+
+* `COGNITIVE_SUBSCRIPTION_KEY`: The value is the Azure secret key for your subscription to Translator.
+* `COGNITIVE_SUBSCRIPTION_REGION`: The value is the region of the multi-service or regional translator resource. This value is optional when using a global translator resource.
+
+```ruby
+require 'translator-text'
+
+client = TranslatorText.client
+```
+
+
 ### Translation
 
 ```ruby
 require 'translator-text'
 
-api_key = ENV.fetch('COGNITIVE_SUBSCRIPTION_KEY')
-client = TranslatorText::Client.new(api_key)
-
-results = client.translate(
+results = TranslatorText.client.translate(
 	['something to translate', 'another something to translate'],
 	to: [:fr, :es]
 )
@@ -58,10 +77,7 @@ results = client.translate(
 ```ruby
 require 'translator-text'
 
-api_key = ENV.fetch('COGNITIVE_SUBSCRIPTION_KEY')
-client = TranslatorText::Client.new(api_key)
-
-results = client.detect(['some unknown language', 'quelque chose à détecter'])
+results = TranslatorText.client.detect(['some unknown language', 'quelque chose à détecter'])
 
 # Returns
 # [

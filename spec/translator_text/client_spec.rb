@@ -4,7 +4,10 @@ require 'spec_helper'
 
 describe TranslatorText::Client do
   let(:client) do
-    described_class.new(ENV.fetch('COGNITIVE_SUBSCRIPTION_KEY', 'XXX'))
+    described_class.new(
+      ENV.fetch('COGNITIVE_SUBSCRIPTION_KEY', 'XXX'),
+      ENV.fetch('COGNITIVE_SUBSCRIPTION_REGION', nil)
+    )
   end
 
   describe '(integrations tests)', integration: true do
