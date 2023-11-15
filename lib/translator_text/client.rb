@@ -12,6 +12,12 @@ module TranslatorText
     base_uri 'https://api.cognitive.microsofttranslator.com'
     API_VERSION = '3.0'
 
+    query_string_normalizer proc { |query|
+      query.map do |key, value|
+        Array(value).map { |v| "#{key}=#{v}" }
+      end.join('&')
+    }
+
     # Initialize the client
     # @since 1.0.0
     #
