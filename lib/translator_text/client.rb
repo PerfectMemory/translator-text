@@ -93,22 +93,19 @@ module TranslatorText
     # If success, return the response body
     # If failure, raise an error
     def handle_response(response)
-      case response.code
-      when 200..299
-        response
-      else
-        if response.request.format == :json
-          raise ServiceError.new(
-            code: response['error']['code'],
-            message: response['error']['message']
-          )
-        else
-          raise NetError.new(
-            code: response.code,
-            message: response.response.message
-          )
-        end
+      return response if response.code.between?(200, 299)
+
+      if response.request.format == :json && response['error']
+        raise ServiceError.new(
+          code: response['error']['code'],
+          message: response['error']['message']
+        )
       end
+
+      raise NetError.new(
+        code: response.code,
+        message: response.response.message
+      )
     end
 
     def headers

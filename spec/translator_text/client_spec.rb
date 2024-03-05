@@ -10,7 +10,7 @@ describe TranslatorText::Client do
     )
   end
 
-  describe '(integrations tests)', integration: true do
+  describe '(integrations tests)', :integration do
     before(:all) do
       WebMock.disable!
     end
@@ -73,8 +73,8 @@ describe TranslatorText::Client do
       'https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=fr'
     end
 
-    before do
-      @stub = stub_request(:post, translate_url).with(
+    let!(:stub) do
+      stub_request(:post, translate_url).with(
         body: '[{"Text":"First sentence"},{"Text":"Second sentence"}]'
       ).to_return(
         body: load_response('translation_1')
@@ -88,14 +88,14 @@ describe TranslatorText::Client do
 
       it 'calls the service' do
         results
-        expect(@stub).to have_been_requested
+        expect(stub).to have_been_requested
       end
     end
 
     context 'with Types::Sentence' do
       it 'calls the service' do
         results
-        expect(@stub).to have_been_requested
+        expect(stub).to have_been_requested
       end
     end
 
@@ -109,6 +109,18 @@ describe TranslatorText::Client do
 
     it 'returns the detected language' do
       expect(results.map(&:detected_language)).to eq %i[en en]
+    end
+
+    context 'with a unauthorized request' do
+      before do
+        stub_request(:post, translate_url).to_return(
+          status: 401
+        )
+      end
+
+      it 'raises a NetError' do
+        expect { results }.to raise_error(TranslatorText::NetError)
+      end
     end
   end
 
@@ -128,8 +140,8 @@ describe TranslatorText::Client do
       'https://api.cognitive.microsofttranslator.com/detect?api-version=3.0'
     end
 
-    before do
-      @stub = stub_request(:post, detect_url).with(
+    let!(:stub) do
+      stub_request(:post, detect_url).with(
         body: '[{"Text":"First sentence"},{"Text":"Second sentence"}]'
       ).to_return(
         body: load_response('detection_1')
@@ -143,14 +155,14 @@ describe TranslatorText::Client do
 
       it 'calls the service' do
         results
-        expect(@stub).to have_been_requested
+        expect(stub).to have_been_requested
       end
     end
 
     context 'with Types::Sentence' do
       it 'calls the service' do
         results
-        expect(@stub).to have_been_requested
+        expect(stub).to have_been_requested
       end
     end
 
@@ -160,6 +172,18 @@ describe TranslatorText::Client do
 
     it 'returns the detected language' do
       expect(results.map(&:language)).to eq %i[en en]
+    end
+
+    context 'with a unauthorized request' do
+      before do
+        stub_request(:post, detect_url).to_return(
+          status: 401
+        )
+      end
+
+      it 'raises a NetError' do
+        expect { results }.to raise_error(TranslatorText::NetError)
+      end
     end
   end
 end
