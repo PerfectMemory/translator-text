@@ -8,7 +8,7 @@ module TranslatorText
       transform_keys(&:to_sym)
 
       attribute :translations, Types::Array.of(Translation)
-      attribute :detectedLanguage, Types::Hash.default({})
+      attribute :detectedLanguage, Types::Hash.default({}.freeze)
 
       # Returns the detected language
       #
