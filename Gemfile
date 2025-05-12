@@ -6,7 +6,7 @@ source 'https://rubygems.org'
 
 group :test, :development do
   gem 'dotenv'
-  gem 'rake', '~> 12'
+  gem 'rake', '~> 13'
   gem 'rspec', '~> 3'
   gem 'rubocop'
   gem 'rubocop-rspec'
